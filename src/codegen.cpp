@@ -6958,9 +6958,6 @@ extern "C" void *jl_init_llvm(void)
     eb  .setEngineKind(EngineKind::JIT)
         .setMCJITMemoryManager(std::unique_ptr<RTDyldMemoryManager>{createRTDyldMemoryManager()})
         .setTargetOptions(options)
-#if (defined(_OS_LINUX_) && defined(_CPU_X86_64_))
-        .setRelocationModel(Reloc::PIC_)
-#endif
 #ifdef _P64
         .setCodeModel(CodeModel::Large)
 #else
